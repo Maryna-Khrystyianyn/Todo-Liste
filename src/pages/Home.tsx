@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Categories } from "../assets/categories";
 import TaskItem from "../components/Task/TaskItem";
 import { useTodos } from "../components/todoContext/TodoContext";
+import type { Todo } from "../assets/types";
 
 const Home = () => {
   const { todos } = useTodos();

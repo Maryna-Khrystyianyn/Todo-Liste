@@ -1,11 +1,17 @@
-import { createContext, useContext, useEffect, useReducer, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  type ReactNode,
+} from "react";
 import { reducer, initialState } from "../../assets/reduser";
 import type { State, Todo } from "../../assets/types";
 
 const STORAGE_KEY = "Todo-list";
 
 const TodosContext = createContext<{
-  todos: Todo[],
+  todos: Todo[];
   addTask: (
     name: Todo["name"],
     description: Todo["description"],
@@ -21,6 +27,7 @@ const TodosContext = createContext<{
   ) => void;
   markDone: (id: Todo["id"]) => void;
   deleteTask: (id: Todo["id"]) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }>({ todos: [] } as any);
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
@@ -34,7 +41,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const value = {
-    todos:state.todos,
+    todos: state.todos,
     addTask(
       name: string,
       description: string | null,
@@ -80,10 +87,12 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
     },
   };
 
- useEffect(() => {
+  useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch {}
+    } catch {
+      console.log("Error");
+    }
   }, [state]);
 
   return (
@@ -91,4 +100,5 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTodos = () => useContext(TodosContext);

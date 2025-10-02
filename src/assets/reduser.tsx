@@ -1,4 +1,4 @@
-import type { Action, State, Todo } from "./types";
+import type { Action, State, Todo, TodoStatus } from "./types";
 import { getId } from "./utils";
 
 export const reducer = (state: State, action: Action) => {
@@ -13,7 +13,7 @@ export const reducer = (state: State, action: Action) => {
         updated: new Date(),
         dateToComplete: null,
         categoryId,
-        status: "new" as const,
+        status: "new" as TodoStatus,
         durationInUhr,
       };
       return {
@@ -30,7 +30,7 @@ export const reducer = (state: State, action: Action) => {
         updated: new Date(),
         dateToComplete: null,
         categoryId,
-        status: "updated" as const,
+        status: "updated" as TodoStatus,
         durationInUhr,
       };
       return {
@@ -43,7 +43,7 @@ export const reducer = (state: State, action: Action) => {
     case "DONE_TASK": {
       const { todoId } = action;
       const statusItem = state.todos.find((item) => item.id === todoId)?.status;
-      const statusReturn = statusItem === "done" ? "new" : "done";
+      const statusReturn = statusItem === "done" ? "new" as TodoStatus : "done" as TodoStatus;
       return {
         ...state,
         todos: state.todos.map((task) =>
