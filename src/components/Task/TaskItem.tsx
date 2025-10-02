@@ -52,10 +52,27 @@ const TaskItem = ({ task }: TaskItemProps) => {
               Kategorie:{" "}
               <span style={{ color: categoryColor }}> {categoryName}</span>
             </p>
-            
-            <p className="text-lg  text-gray-700 italic">{task.status==="updated"&&<span>Updated: </span>}{new Date(task.updated).toLocaleDateString()}</p>
-            {task.status!=="done"&&<p >Dafür brauchst du <span className="font-bold"> {task.durationInUhr}</span> Stunde(n)</p>}
-            {task.status==="done"&&<p className="text-xl  text-green-800 font-bold" >Erledigt am <span className="font-bold"> {new Date(task.dateToComplete).toLocaleDateString()}</span></p>}
+
+            <p className="text-lg  text-gray-700 italic">
+              {task.status === "updated" && <span>Updated: </span>}
+              {new Date(task.updated).toLocaleDateString()}
+            </p>
+            {task.status !== "done" && (
+              <p>
+                Dafür brauchst du{" "}
+                <span className="font-bold"> {task.durationInUhr}</span>{" "}
+                Stunde(n)
+              </p>
+            )}
+            {task.status === "done" && task.dateToComplete && (
+              <p className="text-xl  text-green-800 font-bold">
+                Erledigt am{" "}
+                <span className="font-bold">
+                  {" "}
+                  {new Date(task.dateToComplete).toLocaleDateString()}
+                </span>
+              </p>
+            )}
           </div>
           <div>
             <input
