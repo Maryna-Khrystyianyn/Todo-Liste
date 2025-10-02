@@ -23,7 +23,7 @@ const Header = () => {
       <div className="sm:grid grid-cols-2 w-full items-center hidden pr-10 max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center gap-10">
           <img
-          src="/public/images/todo-logo.png"
+          src="/images/todo-logo.png"
           alt="todo-logo"
           className="w-[250px] h-auto"
         />
