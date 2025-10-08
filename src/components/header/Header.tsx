@@ -23,14 +23,14 @@ const Header = () => {
       <div className="sm:grid grid-cols-2 w-full items-center hidden pr-10 max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center gap-10">
           <img
-          src="/images/todo-logo.png"
-          alt="todo-logo"
-          className="w-[250px] h-auto"
-        />
+            src="/images/todo-logo.png"
+            alt="todo-logo"
+            className="w-[250px] h-auto"
+          />
 
-        <h1 className="text-main text-4xl font-bold ">To-do-Liste</h1> 
+          <h1 className="text-main text-4xl font-bold ">To-do-Liste</h1>
         </div>
-       
+
         <AddTask
           addTask={addTask}
           handelAddTaskShowInput={handelAddTaskShowInput}
@@ -38,7 +38,7 @@ const Header = () => {
       </div>
       {!showInput && (
         <img
-          src="../../../public/images/todo-logo.png"
+          src="/images/todo-logo.png"
           alt="todo-logo"
           className="w-[150px] h-auto sm:hidden"
         />
